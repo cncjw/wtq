@@ -7,14 +7,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>wxid转二维码</title>
 
-	<script src="./qrcode.js"></script>
-	<!-- <script src="./qrcode.min.js"></script> -->
+	<!-- <script src="./qrcode.js"></script> -->
+	<script src="./qrcode.min.js"></script>
+
 </head>
 
 <body>
 	请输入wxid：
-	<input id="text" type="text" /><br />
+	<input id="text" type="text" />
+	<button id="bt">生成</button>
+	<br />
 	<div id="qrcode"></div>
+	<h6>本项目仅供学习使用！禁止商用！出现问题或接口失效作者不负责任！</h6>
+	<script>
+		var qrcode = new QRCode("qrcode");
+		document.getElementById("bt").onclick = function () {
+			qrcode.clear();
+			qrcode.makeCode("weixin://contacts/profile/" + document.getElementById("text").value);
+		};
+	</script>
 </body>
 
 </html>
